@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display-swap");
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: max-content;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 100;
+    background-color: #E3F0FF;
+    color:#3E505B;
+}
+
+
+.container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 12px;
+    margin: 15px;
+    padding: 15px;
+    min-height: 90vh;
+    height: auto;
+    gap: 10px;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 38px;
+    text-align: center;
+    width: 100vw;
+    color: #3083DC;
+}
+
+.description{
+    text-align: center;
+    font: bold;
+}
+
+.link{
+    color: currentColor;    
+}
+
+.link:hover{
+    text-decoration: underline;
+}
+
+.drop-area{
+    width: 100%;
+    height: auto;
+    background-color: #f3f9ff;
+    border-radius: 12px;
+    border: 1px dashed gray;
+    overflow-x: hidden;
+
+    & form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0px 40px;
+        gap: 5px;
+        color: #3083DC;
+    }
+
+    &.drag-files{
+        background: #badcff;
+        border-style: dashed;
+    }
+}
+
+
+.file-input{
+    display: none;
+}
+
+.uploaded{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.subtitle{
+    color: #3083DC;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.uploaded-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: #f3f9ff;
+    gap: 10px;
+}
+
+.btn-download{
+    display:flex;
+    justify-content: left;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    color: #3E505B;
+    padding: 5px 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-delete{
+    border: none;
+    background-color: transparent;
+}
+
+.hidden{
+    display: none;
+}
+/* Drag Over */
+
+
+@media screen {
+    
+}
