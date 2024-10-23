@@ -1,7 +1,7 @@
 <?php
 
 if (!defined('BASE_PATH')) {
-    define('BASE_PATH', dirname(__DIR__, 2));  
+    define('BASE_PATH', dirname(__DIR__, 2));
 }
 
 require_once BASE_PATH . '/app/model/FileModel.php';
@@ -30,12 +30,14 @@ class FileController
             $this->model->createFolder($folderName);
         }
 
-        $this->handlePostRequest($folderName); 
+        $this->handlePostRequest($folderName);
         
-        $this->renderView($folderName);
-    } 
+        $this->renderView('main', [
+            'folderName' => $folderName
+        ]);
+    }
 
-    /* private function getFolderName($currentUrl)
+    private function getFolderName($currentUrl)
     {
         if(isset($_GET['nombre']))
         {
@@ -49,31 +51,7 @@ class FileController
             exit;
         }
         return $folderName;
-    } */
-
-    private function getFolderName($currentUrl)
-    {
-        if (isset($_GET['nombre'])) {
-            $folderName = $_GET['nombre'];
-            echo "Folder Name from URL: " . $folderName . "<br>";
-        } else {
-            $folderName = $this->model->getRandomString();
-            $updateUrl = $currentUrl . "?nombre=" . $folderName;
-            
-            // Crear la carpeta si no existe
-            $folderPath = $this->model->getFolderPath($folderName);
-            if (!file_exists($folderPath)) {
-                mkdir($folderPath, 0777, true); // Crear la carpeta
-            }
-
-            echo "Redirecting to URL: " . $updateUrl . "<br>";
-            header("Location: $updateUrl");
-            exit;
-        }
-        
-        return $folderName;
     }
-
 
     private function handlePostRequest($folderName)
     {
@@ -137,9 +115,10 @@ class FileController
         }
     }
 
-    private function renderView($folderName)
+    private function renderView($viewName, $data = [])
     {
-        require_once BASE_PATH . '/app/view/main.php';
+        extract($data);
+        require_once BASE_PATH . '/app/view/' . $viewName . '.php';
     }
 
     public function getUpdateFiles($folderName)
@@ -148,13 +127,15 @@ class FileController
         {
             $folderPath = $this->model->getFolderPath($folderName);
             $folderFiles = $this->model->getFiles($folderName);
-            include_once BASE_PATH . '/app/view/fileList.php';
-        } 
+            $this->renderView('fileList', [
+                'folderPath' => $folderPath,
+                'folderFiles' => $folderFiles
+            ]);
+        }
         else
         {
             echo 'No existe el folder nombrado';
         }
-
     }
 
     private function getCurrentFolderName()

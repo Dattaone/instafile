@@ -3,7 +3,7 @@
 class FileModel
 {
 
-    /* public function getFolderPath($folderName)
+    public function getFolderPath($folderName)
     {
         return BASE_PATH . "/uploads/" . $folderName;
     }
@@ -13,28 +13,7 @@ class FileModel
     {
         $folderPath = $this->getFolderPath($folderName);
         return file_exists($folderPath);
-    } */
-
-    public function getFolderPath($folderName)
-    {
-        $folderPath = BASE_PATH . "/uploads/" . $folderName;
-        $realPath = realpath($folderPath);
-
-        // Mostrar la ruta absoluta y la ruta que se está intentando verificar
-        echo "Folder Path: " . $folderPath . "<br>";
-        echo "Real Path: " . $realPath . "<br>";
-
-        return $folderPath;
     }
-    
-    public function folderExists($folderName)
-    {
-        $folderPath = $this->getFolderPath($folderName);
-        // Debugging: Verifica si la ruta se está resolviendo correctamente
-        echo "Checking if folder exists at: " . $folderPath . "<br>";
-        return file_exists($folderPath);
-    }
-
 
 
     public function createFolder($folderName)

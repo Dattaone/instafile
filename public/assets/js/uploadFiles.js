@@ -2,9 +2,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const fileInput = document.querySelector("#file-input");
     const status = document.querySelector("#status");
 
-    // Obtener el nombre de la carpeta desde la URL
+    // Get the folder name from the URL
     const urlParams = new URLSearchParams(window.location.search);
     const folderName = urlParams.get('nombre') || 'a1';
+
+    // Initial fetch to populate file list
+    fetchData(folderName);
 
     fileInput.addEventListener("change", function(){
         uploadFiles(this.files);
@@ -52,17 +55,4 @@ document.addEventListener("DOMContentLoaded", () => {
         xhr.send();
     }
     
-
-    /* function fetchData(){
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', './fetchFolderContent.php', true);
-        xhr.onload = () => {
-            if(xhr.status === 200){
-                document.getElementById('file-container').innerHTML = xhr.responseText;
-            }
-        };
-        xhr.send();
-    } */
-
-
 });
