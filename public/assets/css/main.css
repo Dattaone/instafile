@@ -151,6 +151,42 @@ body{
     background-color: transparent;
 }
 
+/* Progress bar */
+/* CSS para barra de progreso */
+.progress-bar-container {
+    width: 100%;
+    background-color: #f3f9ff;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 8px;
+    margin-top: 4px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0;
+    background-color: #3083DC;
+    transition: width 0.3s ease;
+}
+
+/* .file-progress {
+    margin-top: 5px;
+    height: 8px;
+    border-radius: 4px;
+    appearance: none;
+}
+
+.file-progress::-webkit-progress-bar {
+    background-color: #e3f0ff;
+    border-radius: 4px;
+}
+
+.file-progress::-webkit-progress-value {
+    background-color: #3083dc;
+    border-radius: 4px;
+}
+ */
+
 .hidden{
     display: none;
 }
@@ -158,27 +194,26 @@ body{
 
 @media (min-width: 0px) and (max-width: 375px) {
     .main {
-        /* Asegura que el main ocupe toda la altura y el ancho del viewport */
+        
         min-height: 100vh;
         width: 100vw;
     }
 
     .container {
-        /* El contenedor ocupa todo el viewport tanto en altura como en anchura */
         min-height: 85vh;
         width: 85vw;
         display: flex;
-        flex-direction: column; /* Organización vertical */
+        flex-direction: column; 
     }
 
     .title {
-        width: 80vw; /* Esto sigue respetando el 80% del ancho del viewport para el título */
+        width: 80vw; 
     }
 }
 
 
 
-@media (min-width: 375px) and (max-width: 424px) { /* Corregido max-width */
+@media (min-width: 375px) and (max-width: 424px) { 
     .container{
         margin: 30px;
     }

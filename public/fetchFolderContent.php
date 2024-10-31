@@ -6,9 +6,9 @@ if (!defined('BASE_PATH')) {
 
 include_once BASE_PATH . '/app/controller/FileController.php';
 
-// Obtener el nombre de la carpeta de la URL
-$folderName = isset($_GET['nombre']) ? $_GET['nombre'] : '';
+// Get folder name of URL
+$folderName = isset($_GET['folderName']) ? $_GET['folderName'] : '';
 
 $controller = new FileController();
-// Pasar el nombre de la carpeta al controlador
+
 $controller->getUpdateFiles($folderName);

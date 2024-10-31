@@ -15,11 +15,11 @@ class FileController
         $this->model = new FileModel();
     }
     
-    private function getCurrentUrl()
+    /* private function getCurrentUrl()
     {
         $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
         return "$protocol://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
-    }
+    } */
 
     public function index()
     {
@@ -37,17 +37,17 @@ class FileController
         ]);
     }
 
-    private function getFolderName($currentUrl)
+    private function getFolderName()
     {
-        if(isset($_GET['nombre']))
-        {
-            $folderName = $_GET['nombre'];
-        }
-        else
+        $currentUrl = $_SERVER['REQUEST_URI'];
+        $urlSegments= explode('/', trim($currentUrl, '/'));
+
+        $folderName = end($urlSegments);
+
+        if(empty($folderName))
         {
             $folderName = $this->model->getRandomString();
-            $updateUrl = $currentUrl . "?nombre=" . $folderName;
-            header("Location: $updateUrl");
+            header("Location: /$folderName");
             exit;
         }
         return $folderName;
@@ -74,7 +74,6 @@ class FileController
     {
         $files = $_FILES['files'];
         $uploadErrors = false;
-
 
         for ($i = 0; $i < count($files['name']); $i++)
         {
@@ -140,8 +139,7 @@ class FileController
 
     private function getCurrentFolderName()
     {
-        $currentUrl = $this->getCurrentUrl();
-        return $this->getFolderName($currentUrl);
+        return $this->getFolderName();
     }
 
 }
