@@ -5,16 +5,11 @@
 
         <a href='<?php echo $folderPath . '/' . $file ?>' download class="btn-download">
             <img src="/assets/images/file.svg" alt="file">
-            <?php echo $file ?>
+            <?php echo htmlspecialchars($file); ?>
         </a>
-        <form action="" method="POST">
-            <input type="hidden" name="delete-file" value='<?php echo $file ?>'>
-            <button type="submit" class="btn-delete">
-                <img src="/assets/images/delete.svg" alt="delete">
-            </button>
-        </form>
-        <!-- Progress bar -->
-        <progress class="file-progress" value="0" max="100" style="width: 100%; display: none;"></progress>
+        <button type="submit" class="btn-delete" onclick="deleteFile('<?php echo htmlspecialchars($file) ?>')">
+            <img src="/assets/images/delete.svg" alt="delete">
+        </button>
     </div>
     
     <?php endforeach; ?>

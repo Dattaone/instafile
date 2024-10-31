@@ -64,7 +64,7 @@ class FileController
 
             if (isset($_POST['delete-file']))
             {
-                $this->handleFileDelete($folderName);
+                $this->handleFileDelete($folderName, $_POST['delete-file']);
             }
             
         }
@@ -106,9 +106,9 @@ class FileController
         
     }
 
-    private function handleFileDelete($folderName)
+    private function handleFileDelete($folderName, $fileName)
     {
-        if (!$this->model->fileDelete($folderName, $_POST['delete-file']))
+        if (!$this->model->fileDelete($folderName, $fileName))
         {
             echo "Error al eliminar el archivo.";
         }
