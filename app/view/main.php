@@ -17,7 +17,7 @@
                 </form>
                 <div id="status"></div>
             </div>
-            <div class="uploaded" id="file-container">
+            <div class="uploaded" id="uploaded">
                 
             </div>
         </div>

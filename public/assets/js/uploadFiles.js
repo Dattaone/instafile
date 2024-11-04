@@ -21,7 +21,7 @@ function fetchData(folderName) {
     xhr.open('GET', './fetchFolderContent.php?folderName=' + encodeURIComponent(folderName), true);
     xhr.onload = () => {
         if (xhr.status === 200) {
-            document.getElementById('file-container').innerHTML = xhr.responseText;
+            document.querySelector('#uploaded').innerHTML = xhr.responseText;
         }
     };
     xhr.send();
