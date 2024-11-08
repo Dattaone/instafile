@@ -35,6 +35,7 @@ class FileModel
 
     public function fileUpload($folderName, $file)
     {
+        $file['name'] = str_replace(' ','_',$file['name']);
         $folderPath = $this->getFolderPath($folderName);
         return move_uploaded_file($file['tmp_name'], $folderPath . '/' . $file['name']);
     }

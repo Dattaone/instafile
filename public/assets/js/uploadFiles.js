@@ -29,7 +29,9 @@ function fetchData(folderName) {
 
 
 function uploadFiles(files = []) {
+    const modal = document.querySelector("#modal");
     const status = document.querySelector("#status");
+    const progressBar = document.querySelector("#progress-bar");
 
     if(files.length === 0) return;
     
@@ -42,20 +44,55 @@ function uploadFiles(files = []) {
     let xhr = new XMLHttpRequest();
     xhr.open("POST", window.location.href);
 
+    modal.style.display = 'flex';
+    status.innerHTML = 'Subiendo archivos(0%)';
+
+
+    xhr.upload.onprogress = function(event) {
+        if (event.lengthComputable) {
+            const percentComplete = Math.round((event.loaded / event.total) * 100);
+
+            if (progressBar) {
+                progressBar.style.width = `${percentComplete}%`;
+                status.innerHTML = `Subiendo archivos(${percentComplete}%)`;
+                
+                if (percentComplete === 100) {
+                    status.innerHTML = 'Procesando...';
+                }
+            }
+        }
+    };
     xhr.onload = function() {
         if(xhr.status == 200) {
             console.log('Archivos subidos exitosamente');
+
             fetchData(folderName);
+            hideModal();
+
         } else {
             console.error('Error al subir archivos');
+            status.innerHTML = 'Error al subir archivos';
         }
     };
 
     xhr.onerror = function() {
         status.innerHTML = 'Error de conexión con el servidor. Por favor vuelva a intentarlo';
+        hideModal();
     };
 
     xhr.send(formData);
+
+    function hideModal(){
+        modal.style.display="none";
+        resetProgressBar();
+    }
+
+    function resetProgressBar(){
+        if(progressBar){
+            progressBar.style.width="0%";
+        }
+    }
+
 }
 
 

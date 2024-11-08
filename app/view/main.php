@@ -15,12 +15,20 @@
                         <input type="file" class="file-input" name="files[]" id="file-input" >
                     </label>
                 </form>
-                <div id="status"></div>
+                
             </div>
             <div class="uploaded" id="uploaded">
                 
             </div>
         </div>
     </div>
-
+    
+</div>
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <div id="status"></div>
+        <div id="progress-container" class="progress-conteiner">
+            <div id="progress-bar" class="progress-bar"></div>
+        </div>
+    </div>
 </div>
