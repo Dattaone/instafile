@@ -8,14 +8,14 @@
             <img class="image-file" alt="file" src=<?php
             $extension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
             $image = match($extension){
-                'pdf'               => '/assets/images/pdf-document.svg',
-                'ppt'               => '/assets/images/ppt-document.svg',
-                'txt'               => '/assets/images/txt-document.svg',
-                'zip'               => '/assets/images/zip-document.svg',
-                'doc', 'docx'       => '/assets/images/word-document.svg',
-                'xls', 'xlsx'       => '/assets/images/excel-document.svg',
-                'jpg','jpeg','png'  => '/assets/images/image-document.svg',
-                default             => '/assets/images/file-document.svg',
+                'pdf'               => '/assets/images/icons/pdf-document.svg',
+                'ppt'               => '/assets/images/icons/ppt-document.svg',
+                'txt'               => '/assets/images/icons/txt-document.svg',
+                'zip'               => '/assets/images/icons/zip-document.svg',
+                'doc', 'docx'       => '/assets/images/icons/word-document.svg',
+                'xls', 'xlsx'       => '/assets/images/icons/excel-document.svg',
+                'jpg','jpeg','png'  => '/assets/images/icons/image-document.svg',
+                default             => '/assets/images/icons/file-document.svg',
             };
             echo $image;
             ?> >

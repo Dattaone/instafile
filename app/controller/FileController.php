@@ -46,7 +46,7 @@ class FileController
 
         if(empty($folderName))
         {
-            $folderName = $this->model->getRandomString();
+            $folderName = $this->model->generateRandomKey();
             header("Location: /$folderName");
             exit;
         }

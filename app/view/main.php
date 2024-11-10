@@ -3,7 +3,7 @@
     <div class="container">
         <div class="text-container">
             <h3 class="title">Compartir Archivos</h3>
-            <p class="description">Sube tus archivos y comparte enlace temporal: <b><span class="link"><?php echo 'localhost:8000/'.$folderName; ?></span></b></p>
+            <p class="description">Sube tus archivos y comparte enlace temporal: <b><span class="link"><?php echo $_SERVER['HTTP_HOST'].'/'.$folderName; ?></span></b></p>
         </div>
         <div class="file-container">
             <div class="drop-area" id="drop-area">

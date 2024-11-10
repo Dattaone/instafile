@@ -51,7 +51,17 @@ class FileModel
         return false;
     }
 
-    public function getRandomString()
+    public function generateRandomKey()
+    {
+        $randomKey = $this->getRandomString();
+        while($this->folderExists($randomKey))
+        {
+            $randomKey = $this->getRandomString();
+        }
+        return $randomKey;
+    }
+
+    private function getRandomString()
     {
         $characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
         $randomString = '';
